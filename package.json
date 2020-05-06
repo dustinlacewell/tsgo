@@ -1,0 +1,62 @@
+{
+    "name": "typescript-starter-npm",
+    "version": "1.0.0",
+    "description": "A very simple and basic Typescript Starter boilerplate template based on npm",
+    "author": "Savas Ziplies",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nea/Typescript-Starter"
+    },
+    "bugs": "https://github.com/nea/Typescript-Starter/issues",
+    "keywords": [
+        "npm",
+        "scripts",
+        "watch",
+        "typescript",
+        "tsc",
+        "onchange"
+    ],
+    "scripts": {
+        "clean": "rm -fr test-bin bin tsgo.js && mkdir bin",
+        "compile:tsgo": "browserify src/ts/main.ts -p [ tsify --allowJs ] --standalone tsgo -o bin/tsgo.js -v",
+        "compile:test": "tsc test/*.ts --outDir test-bin",
+        "copy:deps": "copyfiles -u 2 \"src/**/*.js\" bin",
+        "copy:js": "copyfiles -u 1 \"bin/**/*.js\" test-bin",
+        "copy:html": "copyfiles -u 1 \"test/**/*.html\" test-bin",
+        "copy:scss": "node-sass --output-style compressed -r test -o test-bin",
+        "copy:images": "copyfiles -u 1 \"test/**/*.{png,jpg,gif,sgf}\" test-bin",
+        "watch:ts": "globstar -- onchange 'test/**.ts' -- run-s compile:test",
+        "watch:js": "globstar -- onchange 'test/**/*.js' -- run-s copy:js",
+        "watch:html": "globstar -- onchange 'test/**/*.html' -- run-s copy:html",
+        "watch:scss": "globstar -- onchange 'test/**/*.scss' -- run-s copy:scss",
+        "watch:images": "globstar -- onchange \"test/**/*.{png,jpg,gif,sgf}\" -- run-s copy:images",
+        "watch:test": "run-p watch:ts watch:js watch:html watch:scss watch:images",
+        "watch:tsgo": "globstar -- onchange 'src/**/*.*' -- run-s compile:tsgo copy:js",
+        "build": "run-s compile:* copy:*",
+        "watch": "run-p watch:tsgo watch:test",
+        "build-watch": "run-s build watch",
+        "serve": "browser-sync --no-open --port 8888 start -s ./test-bin -f ./test-bin",
+        "start": "run-p build watch serve",
+        "clean-start": "run-s clean start"
+    },
+    "dependencies": {
+        "rxjs": "^6.5.5",
+        "rxjs-compat": "^6.5.5",
+        "rxjs-observe": "^2.1.5"
+    },
+    "devDependencies": {
+        "browser-sync": "^2.18.0",
+        "browserify": "^10.2.4",
+        "concat": "^1.0.3",
+        "copyfiles": "^1.2.0",
+        "globstar": "^1.0.0",
+        "node-sass": "^4.5.0",
+        "npm-run-all": "^4.0.0",
+        "onchange": "^3.2.0",
+        "tsify": "^3.0.1",
+        "typescript": "^2.3.0",
+        "uglify-js": "^2.8.18",
+        "watchify": "^3.2.2"
+    }
+}

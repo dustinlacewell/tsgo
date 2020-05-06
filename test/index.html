@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TSGo Tests</title>
+        <link rel="stylesheet" type="text/css" href="./test.css">
+    </head>
+    <body "margin: auto; text-align: center;">
+        <goban id="test-goban" data-sgf="/variations.sgf">
+            <div class="comments">
+                <div class="go-comments"></div>
+            </div>
+            <div class="content-outer">
+                <div class="content-inner">
+                    <canvas></canvas>
+                    <div class="controls">
+                        <div class="go-first"><<</div>
+                        <div class="go-prev"><</div>
+                        <div class="go-next">></div>
+                        <div class="go-last">>></div>
+                    </div>
+                </div>
+            </div>
+        </goban>
+        <script src='/tsgo.js'></script>
+        <script src='./Test.js'></script>
+    </body>
+</html>

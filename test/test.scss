@@ -1,0 +1,82 @@
+
+
+goban {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2em;
+
+    .comments {
+        flex-basis: 50%;
+        display: table;
+        font-family: "Source Code Pro";
+        margin-top: 2em;
+        margin-right: 2em;
+
+        .go-comments {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+    }
+
+    .content-outer {
+        flex-basis: 50%;
+
+        .content-inner {
+            width: auto;
+            margin: auto;
+            padding: .3em 1em;
+            background: black;
+            border-radius: 15px;
+            box-shadow: 2px 2px 15px black;
+
+            canvas {
+                margin: auto;
+                margin-top: 1em;
+                display: block;
+            }
+
+            .controls {
+                max-width: 350px;
+                display: flex;
+                justify-content: space-evenly;
+                background: black;
+                text-align: center;
+                margin: auto;
+                border-radius: 15px;
+
+                .go-first, .go-last, .go-prev, .go-next {
+                    margin: 10px 0px;
+                    padding: 3px 10px;
+                    background: black;
+                    color: white;
+                    cursor: pointer;
+                    border: 1px solid black;
+
+                    &:hover {
+                        border: 1px solid white;
+                        border-radius: 5px;
+                        background: white;
+                        color: black;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 800px) {
+    goban {
+        flex-direction: column-reverse;
+        align-items: center;
+
+        .comments {
+            margin-top: 0em;
+            margin-right: 0em;
+        }
+    }
+}
