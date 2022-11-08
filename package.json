@@ -47,7 +47,7 @@
     },
     "devDependencies": {
         "browser-sync": "^2.18.0",
-        "browserify": "^10.2.4",
+        "browserify": "^17.0.0",
         "concat": "^1.0.3",
         "copyfiles": "^1.2.0",
         "globstar": "^1.0.0",
